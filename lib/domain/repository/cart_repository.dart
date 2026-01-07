@@ -4,5 +4,3 @@ abstract class CartRepository {
   void clearCart();
   void updateQuantity(int mealId, int quantity);
 }
-
-enum MealCategory { hottest, popular, newCombo, top }
