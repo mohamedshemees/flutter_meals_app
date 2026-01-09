@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_store_flutter/domain/repository/cart_repository.dart';
 import 'package:food_store_flutter/presentation/design_system/app_colors.dart';
 import 'package:food_store_flutter/presentation/design_system/widgets/outlined_button.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../domain/entity/meal.dart';
 import '../../../main.dart';
@@ -221,7 +222,7 @@ class _CartScreenState extends State<CartScreen> {
                           _buildCreditCardBottomSheet(context);
                         },
                         onPayOnDelivery: () {
-                          // to success screen
+                          context.go("/order_completed");
                         },
                       ),
                     );

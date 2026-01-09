@@ -54,7 +54,7 @@ class AppStrings {
   static const String yourDeliveryAgentIsComing = 'Your delivery agent is coming';
   static const String orderReceived = 'Order Received';
   static const String congratulations = 'Congratulations!!!';
-  static const String yourOrderHasBeenTaken = 'Your order have been taken and is being attended to';
+  static const String yourOrderHasBeenTaken = 'Your order have been taken and \nis being attended to';
   static const String trackOrder = 'Track order';
   static const String continueShopping = 'Continue shopping';
 
