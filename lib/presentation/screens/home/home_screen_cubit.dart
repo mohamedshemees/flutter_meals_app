@@ -67,27 +67,19 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       try {
         await _mealsRepository.toggleFavorite(mealId);
 
-        final updatedRecommended = await _mealsRepository.getRecommendedMeals();
-        
-        final String tag;
-        switch (currentState.selectedCategory) {
-          case AppStrings.hottest:
-            tag = 'Hottest';
-            break;
-          case AppStrings.popular:
-            tag = 'Popular';
-            break;
-          case AppStrings.newCombo:
-            tag = 'New combo';
-            break;
-          case AppStrings.top:
-            tag = 'Top';
-            break;
-          default:
-            tag = 'Hottest';
-        }
-        
-        final updatedCategory = await _mealsRepository.getMealsByTag(tag);
+        final updatedRecommended = currentState.recommendedMeals.map((meal) {
+          if (meal.id == mealId) {
+            return meal.copyWith(isFavorite: !meal.isFavorite);
+          }
+          return meal;
+        }).toList();
+
+        final updatedCategory = currentState.categoryMeals.map((meal) {
+          if (meal.id == mealId) {
+            return meal.copyWith(isFavorite: !meal.isFavorite);
+          }
+          return meal;
+        }).toList();
 
         emit(currentState.copyWith(
           recommendedMeals: updatedRecommended,
