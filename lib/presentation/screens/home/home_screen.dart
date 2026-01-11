@@ -13,6 +13,7 @@ import 'package:food_store_flutter/presentation/screens/home/widgets/home_header
 import 'package:food_store_flutter/presentation/screens/home/widgets/recommended_combo_card.dart';
 import 'package:food_store_flutter/presentation/screens/home/widgets/search_filter_row.dart';
 import 'package:food_store_flutter/presentation/screens/meal_details/meal_details_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -62,7 +63,7 @@ class HomeScreenContent extends StatelessWidget {
                   children: [
                     HomeHeader(
                       onBasketTap: () {
-                        // TODO: Navigate to basket
+                        context.go("/cart");
                       },
                       onMenuTap: () {
                         // TODO: Open drawer/menu
