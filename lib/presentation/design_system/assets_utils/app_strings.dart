@@ -7,7 +7,8 @@ class AppStrings {
   static const String startOrdering = 'Start Ordering';
 
   // Home Screen
-  static const String homeWelcome = 'Hello %s, What fruit salad combo do you want today?';
+  static const String homeHello = 'Hello';
+  static const String homeWelcome = ', What fruit salad combo do you want today?';
   static const String myBasket = 'My basket';
   static const String searchForFruitSaladCombos = 'Search for fruit salad combos';
   static const String recommendedCombo = 'Recommended Combo';
