@@ -9,4 +9,5 @@ class AppColors {
   static const  hint=Color(0xFFC2BDBD);
   static const  pureWhite=Color(0xFFFFFFFF);
   static const  pureBlack=Color(0xFF000000);
+  static const  success=Color(0xFF4CD964);
 }

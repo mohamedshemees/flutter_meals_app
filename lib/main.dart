@@ -1,10 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_store_flutter/presentation/screens/cart/cart_screen.dart';
+import 'package:food_store_flutter/presentation/screens/cart/deliver_state_screen.dart';
+import 'package:food_store_flutter/presentation/screens/cart/order_completed_screen.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 import 'di/dependency_provider.dart';
 
 final getIt = GetIt.instance;
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const CartScreen();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: '/cart',
+          builder: (BuildContext context, GoRouterState state) {
+            return const CartScreen();
+          },
+        ),
+        GoRoute(
+          path: '/order_completed',
+          builder: (BuildContext context, GoRouterState state) {
+            return const OrderCompletedScreen();
+          },
+        ) ,
+        GoRoute(
+          path: '/delivery_status_completed',
+          builder: (BuildContext context, GoRouterState state) {
+            return const DeliveryStateScreen();
+          },
+        ),
+      ],
+    ),
+  ],
+);
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -23,7 +58,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: const MyHomePage());
+    return MaterialApp.router(
+      routerConfig: _router,
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 

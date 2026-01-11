@@ -15,7 +15,8 @@ class AppAssets {
   static const String imgFruitBasket2 = 'assets/img_fruit_basket_2.png';
   static const String imgBreakfastQuinoa = 'assets/img_breakfast_quinoa.png';
   static const String imgHoneyLimePeach = 'assets/img_honey_lime_peach.png';
-  static const String icOrderProcessed = 'assets/ic_order_processed.png.png';
+  static const String icOrderProcessed = 'assets/ic_order_processed.png';
+  static const String imgMap = 'assets/img_map.png';
   static const String imgTropicalFruitSalad = 'assets/img_tropical_fruit_salad.png';
   static const String imgFruitDrop = 'assets/img_fruit_drop.png';
   static const String icDeliveryMan = 'assets/ic_delivery_man.png';

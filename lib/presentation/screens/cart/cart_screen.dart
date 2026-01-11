@@ -46,7 +46,7 @@ class _CartScreenState extends State<CartScreen> {
                   ? const Center(child: CircularProgressIndicator())
                   : Column(
                       children: [
-                        _buildTopBar(),
+                        buildTopBar(context:context,title:AppStrings.myBasket),
                         Expanded(
                           child: ListView.separated(
                             shrinkWrap: true,
@@ -418,14 +418,20 @@ class _CartScreenState extends State<CartScreen> {
       ],
     );
   }
-
-  Widget _buildTopBar() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
-      decoration: BoxDecoration(color: AppColors.primary),
-      child: Stack(
-        children: [
-          Container(
+}
+Widget buildTopBar({
+  required BuildContext context,
+  required String title}) {
+  return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+    decoration: BoxDecoration(color: AppColors.primary),
+    child: Stack(
+      children: [
+        GestureDetector(
+          onTap: () {
+            context.pop();
+          },
+          child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
             decoration: BoxDecoration(
               color: AppColors.pureWhite,
@@ -449,21 +455,22 @@ class _CartScreenState extends State<CartScreen> {
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              AppStrings.myBasket,
-              style: TextStyle(
-                color: AppColors.pureWhite,
-                fontFamily: AppFonts.brandonGrotesque,
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-                height: 1.3,
-              ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            title,
+            style: TextStyle(
+              color: AppColors.pureWhite,
+              fontFamily: AppFonts.brandonGrotesque,
+              fontSize: 24,
+              fontWeight: FontWeight.w500,
+              height: 1.3,
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
 }
+

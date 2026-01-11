@@ -48,6 +48,7 @@ class OrderCompletedScreen extends StatelessWidget {
               ),
               const SizedBox(height: 56),
               PrimaryButton(text: AppStrings.trackOrder, onTap: () {
+                context.go("/delivery_status_completed");
 
               }),
               const SizedBox(height: 48),
