@@ -9,6 +9,7 @@ class AppColors {
   static const  hint=Color(0xFFC2BDBD);
   static const  pureWhite=Color(0xFFFFFFFF);
   static const  pureBlack=Color(0xFF000000);
+  static const  success=Color(0xFF4CD964);
   static const  error=Color(0xFFFF0000);
   static const  background=Color(0xFFFAFAFA);
   static const  cardBackground=Color(0xFFFFFFFF);

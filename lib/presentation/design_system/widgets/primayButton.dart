@@ -8,27 +8,31 @@ class PrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback? onTap;
 
-  const PrimaryButton({super.key, required this.text, this.onTap});
+  const PrimaryButton({super.key,
+    required this.text,
+    this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 14),
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontFamily: AppFonts.brandonGrotesque,
-            color: AppColors.pureWhite,
-            fontSize: 16,
-            height: 1.5,
-            fontWeight: FontWeight.w500,
+    return IntrinsicWidth(
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 14,horizontal:16 ),
+          decoration: BoxDecoration(
+            color: AppColors.primary,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            text,
+            style: const TextStyle(
+              fontFamily: AppFonts.brandonGrotesque,
+              color: AppColors.pureWhite,
+              fontSize: 16,
+              height: 1.5,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ),

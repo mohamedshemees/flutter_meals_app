@@ -4,6 +4,38 @@ import 'package:food_store_flutter/presentation/screens/home/home_screen.dart';
 
 import 'di/dependency_provider.dart';
 
+final getIt = GetIt.instance;
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const CartScreen();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: '/cart',
+          builder: (BuildContext context, GoRouterState state) {
+            return const CartScreen();
+          },
+        ),
+        GoRoute(
+          path: '/order_completed',
+          builder: (BuildContext context, GoRouterState state) {
+            return const OrderCompletedScreen();
+          },
+        ) ,
+        GoRoute(
+          path: '/delivery_status_completed',
+          builder: (BuildContext context, GoRouterState state) {
+            return const DeliveryStateScreen();
+          },
+        ),
+      ],
+    ),
+  ],
+);
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
