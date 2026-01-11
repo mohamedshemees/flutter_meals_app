@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_store_flutter/presentation/cubits/app_meals_cubit.dart';
+import 'package:food_store_flutter/presentation/screens/cart/cart_screen.dart';
+import 'package:food_store_flutter/presentation/screens/cart/cart_screen.dart';
+import 'package:food_store_flutter/presentation/screens/cart/deliver_state_screen.dart';
+import 'package:food_store_flutter/presentation/screens/cart/order_completed_screen.dart';
 import 'package:food_store_flutter/presentation/screens/home/home_screen.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 import 'di/dependency_provider.dart';
 
@@ -12,7 +18,7 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const CartScreen();
+        return const HomeScreen();
       },
       routes: <RouteBase>[
         GoRoute(
@@ -26,7 +32,7 @@ final GoRouter _router = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             return const OrderCompletedScreen();
           },
-        ) ,
+        ),
         GoRoute(
           path: '/delivery_status_completed',
           builder: (BuildContext context, GoRouterState state) {
@@ -58,12 +64,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<AppMealsCubit>()..loadMeals(),
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: _router,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
       ),
     );
   }

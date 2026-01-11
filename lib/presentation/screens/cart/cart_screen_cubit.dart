@@ -17,26 +17,28 @@ class CartScreenCubit extends Cubit<CartScreenState> {
           error: null,
           success: false,
           meals: [],
-          totalPrice: 0.0
+          totalPrice: 0.0,
         ),
       );
 
-  void getCartItems()  {
+  void getCartItems() {
     final cartProducts = dummyMeals;
-    var totalPrice=0.0;
+    var totalPrice = 0.0;
     for (var product in cartProducts) {
-      totalPrice+=product.price*product.quantity;
+      totalPrice += product.price * 3;
     }
     try {
       emit(
-          state.copyWith(meals: cartProducts,
+        state.copyWith(
+          meals: cartProducts,
           totalPrice: totalPrice,
-          isLoading: false));
+          isLoading: false,
+        ),
+      );
     } on Exception catch (exception) {
       if (kDebugMode) {
         print(exception);
       }
     }
   }
-
 }

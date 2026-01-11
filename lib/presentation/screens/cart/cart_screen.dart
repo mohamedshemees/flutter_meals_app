@@ -137,7 +137,7 @@ class _CartScreenState extends State<CartScreen> {
                   ],
                 ),
                 Text(
-                  "${meal.quantity} ${AppStrings.packs}",
+                  "${3} ${AppStrings.packs}",
                   style: TextStyle(
                     color: AppColors.pureBlack,
                     fontFamily: AppFonts.brandonGrotesque,
