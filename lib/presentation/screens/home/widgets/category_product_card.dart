@@ -111,14 +111,18 @@ class CategoryProductCard extends StatelessWidget {
                         child: Container(
                           width: 28,
                           height: 28,
-                          decoration: const BoxDecoration(
-                            color: AppColors.primary,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryBackground,
                             shape: BoxShape.circle,
+                            border: Border.all(
+                              color: AppColors.primary,
+                              width: 1,
+                            ),
                           ),
                           child: const Icon(
                             Icons.add,
                             size: 18,
-                            color: AppColors.pureWhite,
+                            color: AppColors.primary,
                           ),
                         ),
                       ),
