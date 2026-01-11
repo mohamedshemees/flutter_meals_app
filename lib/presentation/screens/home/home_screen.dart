@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_store_flutter/di/dependency_provider.dart';
+import 'package:food_store_flutter/presentation/cubits/app_meals_cubit.dart';
+import 'package:food_store_flutter/presentation/cubits/app_meals_state.dart';
 import 'package:food_store_flutter/presentation/design_system/app_colors.dart';
 import 'package:food_store_flutter/presentation/design_system/app_fonts.dart';
 import 'package:food_store_flutter/presentation/design_system/assets_utils/app_strings.dart';
-import 'package:food_store_flutter/presentation/screens/home/home_screen_cubit.dart';
-import 'package:food_store_flutter/presentation/screens/home/home_screen_state.dart';
 import 'package:food_store_flutter/presentation/screens/home/widgets/category_product_card.dart';
 import 'package:food_store_flutter/presentation/screens/home/widgets/category_tab_item.dart';
 import 'package:food_store_flutter/presentation/screens/home/widgets/greeting_section.dart';
 import 'package:food_store_flutter/presentation/screens/home/widgets/home_header.dart';
 import 'package:food_store_flutter/presentation/screens/home/widgets/recommended_combo_card.dart';
 import 'package:food_store_flutter/presentation/screens/home/widgets/search_filter_row.dart';
+import 'package:food_store_flutter/presentation/screens/meal_details/meal_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<HomeScreenCubit>()..loadHomeData(),
-      child: const HomeScreenContent(),
-    );
+    return const HomeScreenContent();
   }
 }
 
@@ -34,9 +31,9 @@ class HomeScreenContent extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+        child: BlocBuilder<AppMealsCubit, AppMealsState>(
           builder: (context, state) {
-            if (state is HomeScreenLoading) {
+            if (state is AppMealsLoading) {
               return const Center(
                 child: CircularProgressIndicator(
                   color: AppColors.primary,
@@ -44,7 +41,7 @@ class HomeScreenContent extends StatelessWidget {
               );
             }
 
-            if (state is HomeScreenError) {
+            if (state is AppMealsError) {
               return Center(
                 child: Text(
                   state.message,
@@ -57,7 +54,7 @@ class HomeScreenContent extends StatelessWidget {
               );
             }
 
-            if (state is HomeScreenSuccess) {
+            if (state is AppMealsSuccess) {
               return SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
@@ -142,14 +139,18 @@ class RecommendedComboSection extends StatelessWidget {
               return RecommendedComboCard(
                 meal: meal,
                 onTap: () {
-                  // TODO: Navigate to detail
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => MealDetailsScreen(mealId: meal.id),
+                    ),
+                  );
                 },
                 onAddTap: () {
                   HapticFeedback.lightImpact();
-                  context.read<HomeScreenCubit>().addToCart(meal.id);
+                  context.read<AppMealsCubit>().addToCart(meal.id);
                 },
                 onFavoriteTap: () {
-                  context.read<HomeScreenCubit>().toggleFavorite(meal.id);
+                  context.read<AppMealsCubit>().toggleFavorite(meal.id);
                 },
               );
             },
@@ -190,7 +191,7 @@ class CategoryTabsSection extends StatelessWidget {
             title: category,
             isSelected: category == selectedCategory,
             onTap: () {
-              context.read<HomeScreenCubit>().selectCategory(category);
+              context.read<AppMealsCubit>().selectCategory(category);
             },
           );
         },
@@ -232,14 +233,18 @@ class CategoryProductsSection extends StatelessWidget {
             meal: meal,
             backgroundColor: backgroundColor,
             onTap: () {
-              // TODO: Navigate to detail
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MealDetailsScreen(mealId: meal.id),
+                ),
+              );
             },
             onAddTap: () {
               HapticFeedback.lightImpact();
-              context.read<HomeScreenCubit>().addToCart(meal.id);
+              context.read<AppMealsCubit>().addToCart(meal.id);
             },
             onFavoriteTap: () {
-              context.read<HomeScreenCubit>().toggleFavorite(meal.id);
+              context.read<AppMealsCubit>().toggleFavorite(meal.id);
             },
           );
         },
