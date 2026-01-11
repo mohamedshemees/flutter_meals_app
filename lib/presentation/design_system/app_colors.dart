@@ -13,6 +13,7 @@ class AppColors {
   static const  error=Color(0xFFFF0000);
   static const  background=Color(0xFFFAFAFA);
   static const  cardBackground=Color(0xFFFFFFFF);
+  static const  primaryBackground=Color(0xFFFFF7F0);
   static const  textPrimary=Color(0xFF27214D);
   static const  textSecondary=Color(0xFF5D577E);
   static const  searchBackground=Color(0xFFF3F1F1);
