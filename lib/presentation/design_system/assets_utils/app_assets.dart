@@ -19,4 +19,6 @@ class AppAssets {
   static const String imgTropicalFruitSalad = 'assets/img_tropical_fruit_salad.png';
   static const String imgFruitDrop = 'assets/img_fruit_drop.png';
   static const String icDeliveryMan = 'assets/ic_delivery_man.png';
+  static const String icMenu= 'assets/menue.png';
+  static const String icBasket = 'assets/ic_basket.png';
 }
